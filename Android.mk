@@ -1379,7 +1379,6 @@ LOCAL_SRC_FILES := \
     modules/java/generator/src/java/android+AsyncServiceHelper.java \
     modules/java/generator/src/java/android+InstallCallbackInterface.java \
     modules/java/generator/src/java/utils+Converters.java \
-    modules/java/generator/src/java/engine+OpenCVEngineInterface.aidl \
     modules/core/misc/java/src/cpp/core_manual.cpp
 
 LOCAL_SHARED_LIBRARIES := libopencv_core libopencv_flann libopencv_imgproc libopencv_ml libopencv_photo libopencv_video libopencv_imgcodecs libopencv_videoio libopencv_highgui libopencv_objdetect libopencv_features2d libopencv_calib3d
