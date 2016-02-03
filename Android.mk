@@ -6,7 +6,6 @@ LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 
 LOCAL_MODULE := libopencv_core
-LOCAL_MODULE_TAGS := optional
 
 LOCAL_RTTI_FLAG := -frtti
 
@@ -14,14 +13,11 @@ LOCAL_C_INCLUDES := \
     $(LOCAL_PATH) \
     $(LOCAL_PATH)/modules/core/include \
     $(LOCAL_PATH)/opencv2 \
-    $(LOCAL_PATH)/modules/hal/include \
-    $(LOCAL_PATH)/../zlib \
-    $(LOCAL_PATH)/../zlib/src
+    $(LOCAL_PATH)/modules/hal/include
 
+LOCAL_CFLAGS := -fexceptions -D__OPENCV_BUILD=1 -DCVAPI_EXPORTS
 
-LOCAL_CFLAGS := $(LOCAL_C_INCLUDES:%=-I%) -fexceptions -D__OPENCV_BUILD=1 -DCVAPI_EXPORTS
-
-LOCAL_LDLIBS := -L$(SYSROOT)/usr/lib -llog -lz -ldl
+LOCAL_LDLIBS := -llog -lz -ldl
 
 # cxmathfuncs.cpp has implicit cast of int struct fields.
 LOCAL_CLANG_CFLAGS += -Wno-c++11-narrowing
@@ -80,9 +76,8 @@ LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 
 LOCAL_MODULE := libopencv_calib3d
-LOCAL_MODULE_TAGS := optional
 
-LOCAL_LDLIBS := -L$(SYSROOT)/usr/lib -ldl
+LOCAL_LDLIBS := -ldl
 
 LOCAL_RTTI_FLAG := -frtti
 
@@ -99,7 +94,7 @@ LOCAL_C_INCLUDES := \
     $(LOCAL_PATH)/opencv2 \
     $(LOCAL_PATH)/modules/java/generator/src/cpp/common.h
 
-LOCAL_CFLAGS := $(LOCAL_C_INCLUDES:%=-I%) -fexceptions -D__OPENCV_BUILD=1 -DCVAPI_EXPORTS
+LOCAL_CFLAGS := -fexceptions -D__OPENCV_BUILD=1 -DCVAPI_EXPORTS
 
 LOCAL_SRC_FILES := \
     modules/calib3d/src/calibinit.cpp \
@@ -142,9 +137,8 @@ LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 
 LOCAL_MODULE := libopencv_features2d
-LOCAL_MODULE_TAGS := optional
 
-LOCAL_LDLIBS := -L$(SYSROOT)/usr/lib -ldl
+LOCAL_LDLIBS := -ldl
 
 LOCAL_RTTI_FLAG := -frtti
 
@@ -160,7 +154,7 @@ LOCAL_C_INCLUDES := \
     $(LOCAL_PATH)/features2d/src/kaze \
     $(LOCAL_PATH)/modules/java/generator/src/cpp
 
-LOCAL_CFLAGS := $(LOCAL_C_INCLUDES:%=-I%) -fexceptions -D__OPENCV_BUILD=1 -DCVAPI_EXPORTS
+LOCAL_CFLAGS := -fexceptions -D__OPENCV_BUILD=1 -DCVAPI_EXPORTS
 
 LOCAL_SRC_FILES := \
     modules/features2d/src/agast.cpp \
@@ -185,9 +179,6 @@ LOCAL_SRC_FILES := \
     modules/features2d/src/kaze/nldiffusion_functions.cpp \
     modules/features2d/src/kaze/AKAZEFeatures.cpp \
     modules/features2d/src/kaze/fed.cpp \
-    modules/features2d/src/opencl/brute_force_match.cl \
-    modules/features2d/src/opencl/orb.cl \
-    modules/features2d/src/opencln/fast.cl \
     modules/features2d/opencl_kernels_features2d.cpp \
     modules/features2d/misc/java/src/cpp/features2d_converters.cpp \
     modules/java/generator/src/cpp/converters.cpp
@@ -206,10 +197,9 @@ include $(CLEAR_VARS)
 LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 
-LOCAL_LDLIBS := -L$(SYSROOT)/usr/lib -ldl
+LOCAL_LDLIBS := -ldl
 
 LOCAL_MODULE := libopencv_flann
-LOCAL_MODULE_TAGS := optional
 
 LOCAL_RTTI_FLAG := -frtti
 
@@ -220,7 +210,7 @@ LOCAL_C_INCLUDES := \
     $(LOCAL_PATH)/modules/hal/include \
     $(LOCAL_PATH)/opencv2
 
-LOCAL_CFLAGS := $(LOCAL_C_INCLUDES:%=-I%) -fexceptions -D__OPENCV_BUILD=1 -DCVAPI_EXPORTS
+LOCAL_CFLAGS := -fexceptions -D__OPENCV_BUILD=1 -DCVAPI_EXPORTS
 
 LOCAL_SRC_FILES := \
     modules/flann/src/miniflann.cpp
@@ -239,9 +229,8 @@ LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 
 LOCAL_MODULE := libopencv_hal
-LOCAL_MODULE_TAGS := optional
 
-LOCAL_LDLIBS := -L$(SYSROOT)/usr/lib -ldl
+LOCAL_LDLIBS := -ldl
 
 LOCAL_RTTI_FLAG := -frtti
 
@@ -250,7 +239,7 @@ LOCAL_C_INCLUDES := \
     $(LOCAL_PATH)/modules/hal \
     $(LOCAL_PATH)/modules/hal/include
 
-LOCAL_CFLAGS := $(LOCAL_C_INCLUDES:%=-I%) -fexceptions -D__OPENCV_BUILD=1 -DCVAPI_EXPORTS
+LOCAL_CFLAGS := -fexceptions -D__OPENCV_BUILD=1 -DCVAPI_EXPORTS
 
 LOCAL_SRC_FILES := \
     modules/hal/src/arithm.cpp \
@@ -274,9 +263,8 @@ LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 
 LOCAL_MODULE := libopencv_highgui
-LOCAL_MODULE_TAGS := optional
 
-LOCAL_LDLIBS := -L$(SYSROOT)/usr/lib -ldl
+LOCAL_LDLIBS := -ldl
 
 LOCAL_RTTI_FLAG := -frtti
 
@@ -291,7 +279,7 @@ LOCAL_C_INCLUDES := \
     $(LOCAL_PATH)/modules/highgui \
     $(LOCAL_PATH)/opencv2
 
-LOCAL_CFLAGS := $(LOCAL_C_INCLUDES:%=-I%) -fexceptions -D__OPENCV_BUILD=1 -DCVAPI_EXPORTS
+LOCAL_CFLAGS := -fexceptions -D__OPENCV_BUILD=1 -DCVAPI_EXPORTS
 
 LOCAL_SRC_FILES := \
     modules/highgui/src/window.cpp
@@ -310,11 +298,9 @@ LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 LOCAL_MODULE := libjasper
 
-LOCAL_MODULE_TAGS := optional
-
 LOCAL_RTTI_FLAG := -frtti
 
-LOCAL_CFLAGS := $(LOCAL_C_INCLUDES:%=-I%) -DEXCLUDE_MIF_SUPPORT -DEXCLUDE_PNM_SUPPORT -DEXCLUDE_BMP_SUPPORT -DEXCLUDE_RAS_SUPPORT  -DEXCLUDE_JPG_SUPPORT -DEXCLUDE_PGX_SUPPORT -Wno-implicit-function-declaration
+LOCAL_CFLAGS := -DEXCLUDE_MIF_SUPPORT -DEXCLUDE_PNM_SUPPORT -DEXCLUDE_BMP_SUPPORT -DEXCLUDE_RAS_SUPPORT  -DEXCLUDE_JPG_SUPPORT -DEXCLUDE_PGX_SUPPORT -Wno-implicit-function-declaration
 
 LOCAL_C_INCLUDES := \
     $(LOCAL_PATH)/3rdparty/libjasper \
@@ -365,13 +351,9 @@ include $(CLEAR_VARS)
 
 LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
-LOCAL_MODULE := libjpeg
-
-LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE := opencv_libjpeg
 
 LOCAL_RTTI_FLAG := -frtti
-
-LOCAL_CFLAGS := $(LOCAL_C_INCLUDES:%=-I%)
 
 LOCAL_C_INCLUDES := \
     $(LOCAL_PATH)/3rdparty/libjpeg
@@ -435,18 +417,14 @@ LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 LOCAL_MODULE := libtiff
 
-LOCAL_MODULE_TAGS := optional
-
 LOCAL_RTTI_FLAG := -frtti
 
-LOCAL_LDLIBS := -L$(SYSROOT)/usr/lib -lz
+LOCAL_LDLIBS := -lz
 
-LOCAL_CFLAGS := $(LOCAL_C_INCLUDES:%=-I%) -Wno-implicit-function-declaration
+LOCAL_CFLAGS := -Wno-implicit-function-declaration
 
 LOCAL_C_INCLUDES := \
-    $(LOCAL_PATH)/3rdparty/libtiff \
-    $(LOCAL_PATH)/../zlib \
-    $(LOCAL_PATH)/../zlib/src
+    $(LOCAL_PATH)/3rdparty/libtiff
 
 LOCAL_SRC_FILES := \
     3rdparty/libtiff/tif_jpeg.c \
@@ -501,13 +479,11 @@ LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 LOCAL_MODULE := libIlmImf
 
-LOCAL_MODULE_TAGS := optional
-
 LOCAL_RTTI_FLAG := -frtti
 
-LOCAL_CFLAGS := $(LOCAL_C_INCLUDES:%=-I%) -fexceptions
+LOCAL_CFLAGS := -fexceptions
 
-LOCAL_LDLIBS := -L$(SYSROOT)/usr/lib -lz -ldl
+LOCAL_LDLIBS := -lz -ldl
 
 LOCAL_C_INCLUDES := \
     $(LOCAL_PATH)/3rdparty/openexr \
@@ -515,9 +491,7 @@ LOCAL_C_INCLUDES := \
     $(LOCAL_PATH)/3rdparty/openexr/Half \
     $(LOCAL_PATH)/3rdparty/openexr/Iex \
     $(LOCAL_PATH)/3rdparty/openexr/IlmThread \
-    $(LOCAL_PATH)/3rdparty/openexr/Imath \
-    $(LOCAL_PATH)/../zlib \
-    $(LOCAL_PATH)/../zlib/src
+    $(LOCAL_PATH)/3rdparty/openexr/Imath
 
 
 LOCAL_SRC_FILES := \
@@ -612,9 +586,8 @@ LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 
 LOCAL_MODULE := libopencv_imgcodecs
-LOCAL_MODULE_TAGS := optional
 
-LOCAL_LDLIBS := -L$(SYSROOT)/usr/lib -lz -ldl
+LOCAL_LDLIBS := -lz -ldl
 
 LOCAL_RTTI_FLAG := -frtti
 
@@ -633,13 +606,10 @@ LOCAL_C_INCLUDES := \
     $(LOCAL_PATH)/3rdparty/libjasper \
     $(LOCAL_PATH)/3rdparty/libjasper/jasper \
     $(LOCAL_PATH)/3rdparty/libjpeg \
-    $(LOCAL_PATH)/3rdparty/libtiff \
-    $(LOCAL_PATH)/../libpng \
-    $(LOCAL_PATH)/../zlib \
-    $(LOCAL_PATH)/../zlib/src
+    $(LOCAL_PATH)/3rdparty/libtiff
 
 
-LOCAL_CFLAGS := $(LOCAL_C_INCLUDES:%=-I%) -fexceptions -D__OPENCV_BUILD=1 -DCVAPI_EXPORTS -lz
+LOCAL_CFLAGS := -fexceptions -D__OPENCV_BUILD=1 -DCVAPI_EXPORTS
 
 LOCAL_SRC_FILES := \
     modules/imgcodecs/src/bitstrm.cpp \
@@ -659,7 +629,7 @@ LOCAL_SRC_FILES := \
     modules/imgcodecs/src/rgbe.cpp \
     modules/imgcodecs/src/utils.cpp
 
-LOCAL_STATIC_LIBRARIES += libopencv_hal libjasper libjpeg libtiff libIlmImf
+LOCAL_STATIC_LIBRARIES += libopencv_hal libjasper opencv_libjpeg libtiff libIlmImf
 LOCAL_SHARED_LIBRARIES := libopencv_core libopencv_imgproc libpng
 
 include $(BUILD_SHARED_LIBRARY)
@@ -674,7 +644,6 @@ LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 
 LOCAL_MODULE := libopencv_imgproc
-LOCAL_MODULE_TAGS := optional
 
 LOCAL_RTTI_FLAG := -frtti
 
@@ -687,9 +656,9 @@ LOCAL_C_INCLUDES := \
     $(LOCAL_PATH)/modules/hal/include \
     $(LOCAL_PATH)/opencv2
 
-LOCAL_LDLIBS := -L$(SYSROOT)/usr/lib -ldl
+LOCAL_LDLIBS := -ldl
 
-LOCAL_CFLAGS := $(LOCAL_C_INCLUDES:%=-I%) -fexceptions -D__OPENCV_BUILD=1 -DCVAPI_EXPORTS
+LOCAL_CFLAGS := -fexceptions -D__OPENCV_BUILD=1 -DCVAPI_EXPORTS
 
 LOCAL_SRC_FILES := \
     modules/imgproc/src/accum.cpp \
@@ -757,9 +726,8 @@ LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 
 LOCAL_MODULE := libopencv_ml
-LOCAL_MODULE_TAGS := optional
 
-LOCAL_LDLIBS := -L$(SYSROOT)/usr/lib -ldl
+LOCAL_LDLIBS := -ldl
 
 LOCAL_RTTI_FLAG := -frtti
 
@@ -770,7 +738,7 @@ LOCAL_C_INCLUDES := \
     $(LOCAL_PATH)/modules/hal/include \
     $(LOCAL_PATH)/modules/ml/include
 
-LOCAL_CFLAGS := $(LOCAL_C_INCLUDES:%=-I%) -fexceptions -D__OPENCV_BUILD=1 -DCVAPI_EXPORTS
+LOCAL_CFLAGS := -fexceptions -D__OPENCV_BUILD=1 -DCVAPI_EXPORTS
 
 LOCAL_SRC_FILES := \
     modules/ml/src/ann_mlp.cpp \
@@ -805,11 +773,10 @@ LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 
 LOCAL_MODULE := libopencv_objdetect
-LOCAL_MODULE_TAGS := optional
 
 LOCAL_RTTI_FLAG := -frtti
 
-LOCAL_LDLIBS := -L$(SYSROOT)/usr/lib -llog -ldl
+LOCAL_LDLIBS := -llog -ldl
 
 LOCAL_C_INCLUDES := \
     $(LOCAL_PATH) \
@@ -827,7 +794,7 @@ LOCAL_C_INCLUDES := \
     $(LOCAL_PATH)/modules/videoio/include \
     $(LOCAL_PATH)/opencv2
 
-LOCAL_CFLAGS := $(LOCAL_C_INCLUDES:%=-I%) -fexceptions -D__OPENCV_BUILD=1 -DCVAPI_EXPORTS
+LOCAL_CFLAGS := -fexceptions -D__OPENCV_BUILD=1 -DCVAPI_EXPORTS
 
 LOCAL_SRC_FILES := \
     modules/objdetect/src/cascadedetect_convert.cpp \
@@ -868,9 +835,7 @@ LOCAL_SRC_FILES:= \
         modules/rsobjdetect/src/rs/detectAt.rs \
         modules/rsobjdetect/src/innerloop.cpp
 
-LOCAL_LDFLAGS := -llog -ldl
-
-LOCAL_MODULE_TAGS := optional
+LOCAL_LDLIBS := -llog -ldl
 
 LOCAL_RENDERSCRIPT_COMPATIBILITY := 21
 
@@ -894,9 +859,8 @@ LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 
 LOCAL_MODULE := libopencv_photo
-LOCAL_MODULE_TAGS := optional
 
-LOCAL_LDLIBS := -L$(SYSROOT)/usr/lib -ldl
+LOCAL_LDLIBS := -ldl -lz
 
 LOCAL_RTTI_FLAG := -frtti
 
@@ -913,7 +877,7 @@ LOCAL_C_INCLUDES := \
     $(LOCAL_PATH)/modules/videoio/include \
     $(LOCAL_PATH)/modules/photo
 
-LOCAL_CFLAGS := $(LOCAL_C_INCLUDES:%=-I%) -fexceptions -D__OPENCV_BUILD=1 -DCVAPI_EXPORTS -lpng -ljpeg -lz
+LOCAL_CFLAGS := -fexceptions -D__OPENCV_BUILD=1 -DCVAPI_EXPORTS
 
 LOCAL_SRC_FILES := \
     modules/photo/src/align.cpp \
@@ -931,7 +895,7 @@ LOCAL_SRC_FILES := \
     modules/photo/src/tonemap.cpp \
     modules/photo/opencl_kernels_photo.cpp
 
-LOCAL_SHARED_LIBRARIES := libopencv_core libopencv_imgproc
+LOCAL_SHARED_LIBRARIES := libopencv_core libopencv_imgproc libpng libjpeg
 LOCAL_STATIC_LIBRARIES := libopencv_hal
 
 include $(BUILD_SHARED_LIBRARY)
@@ -945,10 +909,9 @@ include $(CLEAR_VARS)
 LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 
-LOCAL_LDLIBS := -L$(SYSROOT)/usr/lib -ldl
+LOCAL_LDLIBS := -ldl
 
 LOCAL_MODULE := libopencv_shape
-LOCAL_MODULE_TAGS := optional
 
 LOCAL_RTTI_FLAG := -frtti
 
@@ -961,7 +924,7 @@ LOCAL_C_INCLUDES := \
     $(LOCAL_PATH)/modules/imgproc/include \
     $(LOCAL_PATH)/modules/shape/include
 
-LOCAL_CFLAGS := $(LOCAL_C_INCLUDES:%=-I%) -fexceptions -D__OPENCV_BUILD=1 -DCVAPI_EXPORTS
+LOCAL_CFLAGS := -fexceptions -D__OPENCV_BUILD=1 -DCVAPI_EXPORTS
 
 LOCAL_SRC_FILES := \
     modules/shape/src/aff_trans.cpp \
@@ -987,9 +950,8 @@ LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 
 LOCAL_MODULE := libopencv_stitching
-LOCAL_MODULE_TAGS := optional
 
-LOCAL_LDLIBS := -L$(SYSROOT)/usr/lib -ldl
+LOCAL_LDLIBS := -ldl
 
 LOCAL_RTTI_FLAG := -frtti
 
@@ -1005,7 +967,7 @@ LOCAL_C_INCLUDES := \
     $(LOCAL_PATH)/modules/stitching/include \
     $(LOCAL_PATH)/modules/stitching
 
-LOCAL_CFLAGS := $(LOCAL_C_INCLUDES:%=-I%) -fexceptions -D__OPENCV_BUILD=1 -DCVAPI_EXPORTS
+LOCAL_CFLAGS := -fexceptions -D__OPENCV_BUILD=1 -DCVAPI_EXPORTS
 
 LOCAL_SRC_FILES := \
     modules/stitching/src/autocalib.cpp \
@@ -1037,9 +999,8 @@ LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 
 LOCAL_MODULE := libopencv_superres
-LOCAL_MODULE_TAGS := optional
 
-LOCAL_LDLIBS := -L$(SYSROOT)/usr/lib -ldl
+LOCAL_LDLIBS := -ldl
 
 LOCAL_RTTI_FLAG := -frtti
 
@@ -1054,7 +1015,7 @@ LOCAL_C_INCLUDES := \
     $(LOCAL_PATH)/modules/superres/include \
     $(LOCAL_PATH)/modules/superres/src
 
-LOCAL_CFLAGS := $(LOCAL_C_INCLUDES:%=-I%) -fexceptions -D__OPENCV_BUILD=1 -DCVAPI_EXPORTS
+LOCAL_CFLAGS := -fexceptions -D__OPENCV_BUILD=1 -DCVAPI_EXPORTS
 
 LOCAL_SRC_FILES := \
     modules/superres/src/btv_l1.cpp \
@@ -1080,9 +1041,8 @@ LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 
 LOCAL_MODULE := libopencv_ts
-LOCAL_MODULE_TAGS := optional
 
-LOCAL_LDLIBS := -L$(SYSROOT)/usr/lib -ldl
+LOCAL_LDLIBS := -ldl
 
 LOCAL_RTTI_FLAG := -frtti
 
@@ -1097,7 +1057,7 @@ LOCAL_C_INCLUDES := \
     $(LOCAL_PATH)/modules/imgcodecs/include \
     $(LOCAL_PATH)/modules/ts/include
 
-LOCAL_CFLAGS := $(LOCAL_C_INCLUDES:%=-I%) -fexceptions -D__OPENCV_BUILD=1 -DCVAPI_EXPORTS
+LOCAL_CFLAGS := -fexceptions -D__OPENCV_BUILD=1 -DCVAPI_EXPORTS
 
 LOCAL_SRC_FILES := \
     modules/ts/src/cuda_perf.cpp \
@@ -1122,7 +1082,6 @@ LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 
 LOCAL_MODULE := libopencv_video
-LOCAL_MODULE_TAGS := optional
 
 LOCAL_LDLIBS := -lz -ldl
 
@@ -1137,7 +1096,7 @@ LOCAL_C_INCLUDES := \
     $(LOCAL_PATH)/modules/video/include \
     $(LOCAL_PATH)/modules/imgcodecs/include
 
-LOCAL_CFLAGS := $(LOCAL_C_INCLUDES:%=-I%) -fexceptions -D__OPENCV_BUILD=1 -DCVAPI_EXPORTS
+LOCAL_CFLAGS := -fexceptions -D__OPENCV_BUILD=1 -DCVAPI_EXPORTS
 
 LOCAL_SRC_FILES := \
     modules/video/src/bgfg_gaussmix2.cpp \
@@ -1166,9 +1125,8 @@ LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 
 LOCAL_MODULE := libopencv_videoio
-LOCAL_MODULE_TAGS := optional
 
-LOCAL_LDLIBS := -L$(SYSROOT)/usr/lib -ldl
+LOCAL_LDLIBS := -ldl
 
 LOCAL_RTTI_FLAG := -frtti
 
@@ -1182,7 +1140,7 @@ LOCAL_C_INCLUDES := \
     $(LOCAL_PATH)/modules/videoio/include \
     $(LOCAL_PATH)/modules/video
 
-LOCAL_CFLAGS := $(LOCAL_C_INCLUDES:%=-I%) -fexceptions -D__OPENCV_BUILD=1 -DCVAPI_EXPORTS
+LOCAL_CFLAGS := -fexceptions -D__OPENCV_BUILD=1 -DCVAPI_EXPORTS
 
 LOCAL_SRC_FILES := \
     modules/videoio/src/cap_cmu.cpp \
@@ -1218,9 +1176,8 @@ LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 
 LOCAL_MODULE := libopencv_videostab
-LOCAL_MODULE_TAGS := optional
 
-LOCAL_LDLIBS := -L$(SYSROOT)/usr/lib -ldl
+LOCAL_LDLIBS := -ldl
 
 LOCAL_RTTI_FLAG := -frtti
 
@@ -1238,7 +1195,7 @@ LOCAL_C_INCLUDES := \
     $(LOCAL_PATH)/modules/calib3d/include \
     $(LOCAL_PATH)/modules/videostab/include
 
-LOCAL_CFLAGS := $(LOCAL_C_INCLUDES:%=-I%) -fexceptions -D__OPENCV_BUILD=1 -DCVAPI_EXPORTS
+LOCAL_CFLAGS := -fexceptions -D__OPENCV_BUILD=1 -DCVAPI_EXPORTS
 
 LOCAL_SRC_FILES := \
     modules/videostab/src/deblurring.cpp \
@@ -1268,13 +1225,12 @@ LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 
 LOCAL_MODULE := libopencv_java
-LOCAL_MODULE_TAGS := optional
 
-LOCAL_LDLIBS := -L$(SYSROOT)/usr/lib -llog -lz -ljnigraphics -ldl
+LOCAL_LDLIBS := -llog -lz -ljnigraphics -ldl
 
 LOCAL_RTTI_FLAG := -frtti
 
-LOCAL_CFLAGS := $(LOCAL_C_INCLUDES:%=-I%) -fexceptions -DANDROID -D__OPENCV_BUILD=1 -Dopencv_java_EXPORTS -DCAP_PROP_ANDROID_PREVIEW_SIZES_STRING=1025
+LOCAL_CFLAGS := -fexceptions -DANDROID -D__OPENCV_BUILD=1 -Dopencv_java_EXPORTS -DCAP_PROP_ANDROID_PREVIEW_SIZES_STRING=1025
 
 LOCAL_C_INCLUDES := \
     $(LOCAL_PATH) \
@@ -1298,61 +1254,6 @@ LOCAL_C_INCLUDES := \
     $(LOCAL_PATH)/modules/java/generator/src/cpp
 
 LOCAL_SRC_FILES := \
-    modules/java/src/photo+MergeExposures.java \
-    modules/java/src/calib3d+Calib3d.java \
-    modules/java/src/ml+LogisticRegression.java \
-    modules/java/src/photo+AlignMTB.java \
-    modules/java/src/video+DenseOpticalFlow.java \
-    modules/java/src/objdetect+CascadeClassifier.java \
-    modules/java/src/video+BackgroundSubtractor.java \
-    modules/java/src/photo+TonemapDurand.java \
-    modules/java/src/imgproc+Subdiv2D.java \
-    modules/java/src/video+KalmanFilter.java \
-    modules/java/src/ml+EM.java \
-    modules/java/src/photo+Photo.java \
-    modules/java/src/imgcodecs+Imgcodecs.java \
-    modules/java/src/photo+AlignExposures.java \
-    modules/java/src/objdetect+HOGDescriptor.java \
-    modules/java/src/calib3d+StereoBM.java \
-    modules/java/src/ml+RTrees.java \
-    modules/java/src/ml+Boost.java \
-    modules/java/src/photo+CalibrateCRF.java \
-    modules/java/src/calib3d+StereoSGBM.java \
-    modules/java/src/photo+MergeMertens.java \
-    modules/java/src/video+DualTVL1OpticalFlow.java \
-    modules/java/src/ml+DTrees.java \
-    modules/java/src/calib3d+StereoMatcher.java \
-    modules/java/src/ml+StatModel.java \
-    modules/java/src/videoio+Videoio.java \
-    modules/java/src/photo+CalibrateDebevec.java \
-    modules/java/src/photo+MergeRobertson.java \
-    modules/java/src/video+BackgroundSubtractorKNN.java \
-    modules/java/src/photo+Tonemap.java \
-    modules/java/src/core+Core.java \
-    modules/java/src/ml+Ml.java \
-    modules/java/src/objdetect+BaseCascadeClassifier.java \
-    modules/java/src/video+BackgroundSubtractorMOG2.java \
-    modules/java/src/imgproc+Imgproc.java \
-    modules/java/src/photo+CalibrateRobertson.java \
-    modules/java/src/features2d+Features2d.java \
-    modules/java/src/ml+TrainData.java \
-    modules/java/src/photo+TonemapReinhard.java \
-    modules/java/src/ml+SVM.java \
-    modules/java/src/core+Algorithm.java \
-    modules/java/src/imgproc+CLAHE.java \
-    modules/java/src/imgproc+LineSegmentDetector.java \
-    modules/java/src/videoio+VideoCapture.java \
-    modules/java/src/photo+TonemapDrago.java \
-    modules/java/src/photo+MergeDebevec.java \
-    modules/java/src/features2d+DescriptorExtractor.java \
-    modules/java/src/objdetect+Objdetect.java \
-    modules/java/src/ml+ANN_MLP.java \
-    modules/java/src/ml+NormalBayesClassifier.java \
-    modules/java/src/ml+KNearest.java \
-    modules/java/src/video+Video.java \
-    modules/java/src/features2d+FeatureDetector.java \
-    modules/java/src/photo+TonemapMantiuk.java \
-    modules/java/src/features2d+DescriptorMatcher.java \
     modules/java/src/ml.cpp \
     modules/java/src/video.cpp \
     modules/java/src/photo.cpp \
@@ -1367,18 +1268,6 @@ LOCAL_SRC_FILES := \
     modules/java/generator/src/cpp/utils.cpp \
     modules/java/generator/src/cpp/converters.cpp \
     modules/java/generator/src/cpp/Mat.cpp \
-    modules/java/generator/src/java/android+LoaderCallbackInterface.java \
-    modules/java/generator/src/java/android+CameraBridgeViewBase.java \
-    modules/java/generator/src/java/android+BaseLoaderCallback.java \
-    modules/java/generator/src/java/android+JavaCameraView.java \
-    modules/java/generator/src/java/android+Utils.java \
-    modules/java/generator/src/java/android+sync.py \
-    modules/java/generator/src/java/android+OpenCVLoader.java \
-    modules/java/generator/src/java/android+StaticHelper.java \
-    modules/java/generator/src/java/android+FpsMeter.java \
-    modules/java/generator/src/java/android+AsyncServiceHelper.java \
-    modules/java/generator/src/java/android+InstallCallbackInterface.java \
-    modules/java/generator/src/java/utils+Converters.java \
     modules/core/misc/java/src/cpp/core_manual.cpp
 
 LOCAL_SHARED_LIBRARIES := libopencv_core libopencv_flann libopencv_imgproc libopencv_ml libopencv_photo libopencv_video libopencv_imgcodecs libopencv_videoio libopencv_highgui libopencv_objdetect libopencv_features2d libopencv_calib3d
