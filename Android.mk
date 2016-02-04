@@ -68,6 +68,38 @@ LOCAL_STATIC_LIBRARIES += libopencv_hal
 include $(BUILD_SHARED_LIBRARY)
 
 
+# Build dls.cpp separately without optimizations to avoid slow compile times.
+# We only need to pass -O1 for arm64. Everything else works fine with the defaults.
+# Bug: http://b/25691376
+include $(CLEAR_VARS)
+
+LOCAL_NDK_STL_VARIANT := gnustl_static
+LOCAL_SDK_VERSION := 21
+
+LOCAL_MODULE := libopencv_fix_dls
+
+LOCAL_RTTI_FLAG := -frtti
+
+LOCAL_C_INCLUDES := \
+    $(LOCAL_PATH) \
+    $(LOCAL_PATH)/modules/calib3d/include \
+    $(LOCAL_PATH)/modules/core/include \
+    $(LOCAL_PATH)/modules/hal/include \
+    $(LOCAL_PATH)/modules/features2d/include \
+    $(LOCAL_PATH)/modules/flann/include \
+    $(LOCAL_PATH)/modules/imgproc/include \
+    $(LOCAL_PATH)/modules/calib3d/src \
+    $(LOCAL_PATH)/modules/calib3d \
+    $(LOCAL_PATH)/opencv2 \
+    $(LOCAL_PATH)/modules/java/generator/src/cpp/common.h
+
+LOCAL_CFLAGS := -fexceptions -D__OPENCV_BUILD=1 -DCVAPI_EXPORTS
+LOCAL_CFLAGS_arm64 += -O1
+
+LOCAL_SRC_FILES := \
+    modules/calib3d/src/dls.cpp \
+
+include $(BUILD_STATIC_LIBRARY)
 
 
 include $(CLEAR_VARS)
@@ -103,7 +135,6 @@ LOCAL_SRC_FILES := \
     modules/calib3d/src/circlesgrid.cpp \
     modules/calib3d/src/compat_ptsetreg.cpp \
     modules/calib3d/src/compat_stereo.cpp \
-    modules/calib3d/src/dls.cpp \
     modules/calib3d/src/epnp.cpp \
     modules/calib3d/src/fisheye.cpp \
     modules/calib3d/src/five-point.cpp \
@@ -125,6 +156,9 @@ LOCAL_SRC_FILES := \
 
 LOCAL_SHARED_LIBRARIES := libopencv_imgproc libopencv_flann libopencv_core libopencv_ml libopencv_imgcodecs libopencv_videoio libopencv_highgui libopencv_features2d
 LOCAL_STATIC_LIBRARIES := libopencv_hal
+
+# Bug: http://b/25691376
+LOCAL_STATIC_LIBRARIES += libopencv_fix_dls
 
 include $(BUILD_SHARED_LIBRARY)
 
