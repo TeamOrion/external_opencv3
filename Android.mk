@@ -6,7 +6,7 @@ LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 
 LOCAL_MODULE := libopencv_core
-
+LOCAL_CLANG := false
 LOCAL_RTTI_FLAG := -frtti
 
 LOCAL_C_INCLUDES := \
@@ -77,7 +77,7 @@ LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 
 LOCAL_MODULE := libopencv_fix_dls
-
+LOCAL_CLANG := false
 LOCAL_RTTI_FLAG := -frtti
 
 LOCAL_C_INCLUDES := \
@@ -108,7 +108,7 @@ LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 
 LOCAL_MODULE := libopencv_calib3d
-
+LOCAL_CLANG := false
 LOCAL_LDLIBS := -ldl
 
 LOCAL_RTTI_FLAG := -frtti
@@ -171,7 +171,7 @@ LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 
 LOCAL_MODULE := libopencv_features2d
-
+LOCAL_CLANG := false
 LOCAL_LDLIBS := -ldl
 
 LOCAL_RTTI_FLAG := -frtti
@@ -234,7 +234,7 @@ LOCAL_SDK_VERSION := 21
 LOCAL_LDLIBS := -ldl
 
 LOCAL_MODULE := libopencv_flann
-
+LOCAL_CLANG := false
 LOCAL_RTTI_FLAG := -frtti
 
 LOCAL_C_INCLUDES := \
@@ -263,7 +263,7 @@ LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 
 LOCAL_MODULE := libopencv_hal
-
+LOCAL_CLANG := false
 LOCAL_LDLIBS := -ldl
 
 LOCAL_RTTI_FLAG := -frtti
@@ -297,7 +297,7 @@ LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 
 LOCAL_MODULE := libopencv_highgui
-
+LOCAL_CLANG := false
 LOCAL_LDLIBS := -ldl
 
 LOCAL_RTTI_FLAG := -frtti
@@ -331,6 +331,7 @@ include $(CLEAR_VARS)
 LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 LOCAL_MODULE := libjasper
+LOCAL_CLANG := false
 
 LOCAL_RTTI_FLAG := -frtti
 
@@ -386,7 +387,7 @@ include $(CLEAR_VARS)
 LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 LOCAL_MODULE := opencv_libjpeg
-
+LOCAL_CLANG := false
 LOCAL_RTTI_FLAG := -frtti
 
 LOCAL_C_INCLUDES := \
@@ -450,7 +451,7 @@ include $(CLEAR_VARS)
 LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 LOCAL_MODULE := libtiff
-
+LOCAL_CLANG := false
 LOCAL_RTTI_FLAG := -frtti
 
 LOCAL_LDLIBS := -lz
@@ -512,7 +513,7 @@ include $(CLEAR_VARS)
 LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 LOCAL_MODULE := libIlmImf
-
+LOCAL_CLANG := false
 LOCAL_RTTI_FLAG := -frtti
 
 LOCAL_CFLAGS := -fexceptions
@@ -620,7 +621,7 @@ LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 
 LOCAL_MODULE := libopencv_imgcodecs
-
+LOCAL_CLANG := false
 LOCAL_LDLIBS := -lz -ldl
 
 LOCAL_RTTI_FLAG := -frtti
@@ -678,6 +679,7 @@ LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 
 LOCAL_MODULE := libopencv_imgproc
+LOCAL_CLANG := false
 
 LOCAL_RTTI_FLAG := -frtti
 
@@ -760,7 +762,7 @@ LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 
 LOCAL_MODULE := libopencv_ml
-
+LOCAL_CLANG := false
 LOCAL_LDLIBS := -ldl
 
 LOCAL_RTTI_FLAG := -frtti
@@ -807,7 +809,7 @@ LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 
 LOCAL_MODULE := libopencv_objdetect
-
+LOCAL_CLANG := false
 LOCAL_RTTI_FLAG := -frtti
 
 LOCAL_LDLIBS := -llog -ldl
@@ -857,7 +859,7 @@ include $(BUILD_SHARED_LIBRARY)
 ifeq ($(WITH_RENDERSCRIPT),true)
 include $(CLEAR_VARS)
 LOCAL_MODULE := libopencv_rsobjdetect
-
+LOCAL_CLANG := false
 LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 LOCAL_RENDERSCRIPT_TARGET_API := 21
@@ -893,7 +895,7 @@ LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 
 LOCAL_MODULE := libopencv_photo
-
+LOCAL_CLANG := false
 LOCAL_LDLIBS := -ldl -lz
 
 LOCAL_RTTI_FLAG := -frtti
@@ -946,7 +948,7 @@ LOCAL_SDK_VERSION := 21
 LOCAL_LDLIBS := -ldl
 
 LOCAL_MODULE := libopencv_shape
-
+LOCAL_CLANG := false
 LOCAL_RTTI_FLAG := -frtti
 
 LOCAL_C_INCLUDES := \
@@ -984,7 +986,7 @@ LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 
 LOCAL_MODULE := libopencv_stitching
-
+LOCAL_CLANG := false
 LOCAL_LDLIBS := -ldl
 
 LOCAL_RTTI_FLAG := -frtti
@@ -1033,7 +1035,7 @@ LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 
 LOCAL_MODULE := libopencv_superres
-
+LOCAL_CLANG := false
 LOCAL_LDLIBS := -ldl
 
 LOCAL_RTTI_FLAG := -frtti
@@ -1075,7 +1077,7 @@ LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 
 LOCAL_MODULE := libopencv_ts
-
+LOCAL_CLANG := false
 LOCAL_LDLIBS := -ldl
 
 LOCAL_RTTI_FLAG := -frtti
@@ -1116,7 +1118,7 @@ LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 
 LOCAL_MODULE := libopencv_video
-
+LOCAL_CLANG := false
 LOCAL_LDLIBS := -lz -ldl
 
 LOCAL_RTTI_FLAG := -frtti
@@ -1159,7 +1161,7 @@ LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 
 LOCAL_MODULE := libopencv_videoio
-
+LOCAL_CLANG := false
 LOCAL_LDLIBS := -ldl
 
 LOCAL_RTTI_FLAG := -frtti
@@ -1210,7 +1212,7 @@ LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 
 LOCAL_MODULE := libopencv_videostab
-
+LOCAL_CLANG := false
 LOCAL_LDLIBS := -ldl
 
 LOCAL_RTTI_FLAG := -frtti
@@ -1259,7 +1261,7 @@ LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_SDK_VERSION := 21
 
 LOCAL_MODULE := libopencv_java
-
+LOCAL_CLANG := false
 LOCAL_LDLIBS := -llog -lz -ljnigraphics -ldl
 
 LOCAL_RTTI_FLAG := -frtti
